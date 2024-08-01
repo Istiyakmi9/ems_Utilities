@@ -1,4 +1,4 @@
-package com.bot.utilities;
+package in.bottomhalf.utilities;
 public class UtilitiesApplication {
 
 	public static void main(String[] args) {

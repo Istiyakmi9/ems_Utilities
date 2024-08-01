@@ -1,4 +1,4 @@
-package com.bot.utilities.annotations;
+package in.bottomhalf.utilities.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Transient {
-    public String key() default "";
+public @interface Id {
 }

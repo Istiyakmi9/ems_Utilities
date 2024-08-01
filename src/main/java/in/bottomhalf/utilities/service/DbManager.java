@@ -1,6 +1,6 @@
-package com.bot.utilities.service;
+package in.bottomhalf.utilities.service;
 
-import com.bot.utilities.utils.Template;
+import in.bottomhalf.utilities.utils.Template;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -8,29 +8,39 @@
 		<version>3.0.10-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.bot.utilities</groupId>
+	<groupId>in.bottomhalf.utilities</groupId>
 	<artifactId>utilities</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>utilities</name>
-	<description>Utilities for the application</description>
+	<description>Utilities to handle jdbc and jpa both with multi database support at runtime</description>
+	<url>https://github.com/Istiyakmi9/ems_Utilities</url>
+
+	<licenses>
+		<license>
+			<name>MIT license</name>
+			<url>https://opensource.org/license/mit</url>
+		</license>
+	</licenses>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-	<!--	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-		</dependency>-->
+		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>6.0.11</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<version>8.2.0</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -38,13 +48,13 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
 		<dependency>
@@ -84,6 +94,74 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.4.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>central</publishingServerId>
+					<tokenAuth>true</tokenAuth>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<keyname>0x114E8B7F</keyname>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -127,4 +205,36 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+	<developers>
+		<developer>
+			<id>Istiyak</id>
+			<name>Md Istiyak</name>
+			<email>istiyaq.mi9@gmail.com</email>
+			<organization>BottomHalf</organization>
+			<organizationUrl>http://www.bottomhalf.in</organizationUrl>
+			<roles>
+				<role>Architect</role>
+				<role>lead</role>
+			</roles>
+			<timezone>+5:30</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/Istiyakmi9/ems_Utilities.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:Istiyakmi9/ems_Utilities.git</developerConnection>
+		<url>http://github.com/Istiyakmi9/ems_Utilities</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

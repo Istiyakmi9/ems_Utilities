@@ -1,4 +1,4 @@
-package com.bot.utilities;
+package in.bottomhalf.utilities;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

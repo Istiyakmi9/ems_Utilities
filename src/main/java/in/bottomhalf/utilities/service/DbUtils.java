@@ -1,8 +1,8 @@
-package com.bot.utilities.service;
+package in.bottomhalf.utilities.service;
 
-import com.bot.utilities.annotations.Column;
-import com.bot.utilities.annotations.Id;
-import com.bot.utilities.annotations.Table;
+import in.bottomhalf.utilities.annotations.Column;
+import in.bottomhalf.utilities.annotations.Id;
+import in.bottomhalf.utilities.annotations.Table;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
